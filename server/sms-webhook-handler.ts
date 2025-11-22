@@ -7,6 +7,8 @@ import { Request, Response } from 'express';
 import { DatabaseStorage } from './storage.js';
 import { formatPhoneNumber } from './twilio-service.js';
 import { processSmsWebhook, cleanupExpiredContexts } from './sms-relay-service.js';
+import { validateRequest } from 'twilio';
+import { getWebhookUrl } from './webhook-config.js';
 
 const storage = new DatabaseStorage();
 
@@ -80,8 +82,27 @@ function isOptOutMessage(messageBody: string): boolean {
  */
 export async function handleSmsWebhook(req: Request, res: Response): Promise<void> {
   try {
+    // Validate Twilio webhook signature (skip in development)
+    if (process.env.NODE_ENV === 'production' && process.env.TWILIO_AUTH_TOKEN) {
+      const twilioSignature = req.headers['x-twilio-signature'] as string;
+      const webhookUrl = getWebhookUrl('/api/sms/inbound');
+
+      const isValid = validateRequest(
+        process.env.TWILIO_AUTH_TOKEN,
+        twilioSignature,
+        webhookUrl,
+        req.body
+      );
+
+      if (!isValid) {
+        console.error('Invalid Twilio webhook signature');
+        res.status(403).send('Forbidden');
+        return;
+      }
+    }
+
     const payload: TwilioWebhookPayload = req.body;
-    
+
     console.log('SMS webhook received:', {
       from: payload.From,
       to: payload.To,

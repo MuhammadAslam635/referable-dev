@@ -136,6 +136,7 @@ export interface IStorage {
   markSmsMessageAsRead(id: number, businessId: number): Promise<SmsMessage | undefined>;
   getUnreadSmsMessagesCount(businessId: number): Promise<number>;
   getSmsMessageByTwilioSid(twilioSid: string): Promise<SmsMessage | undefined>;
+  updateSmsMessage(id: number, updates: Partial<InsertSmsMessage>): Promise<SmsMessage | undefined>;
 
 
   // Referral Reward methods  
@@ -866,6 +867,15 @@ export class DatabaseStorage implements IStorage {
       .from(smsMessages)
       .where(eq(smsMessages.twilioSid, twilioSid))
       .limit(1);
+    return result || undefined;
+  }
+
+  async updateSmsMessage(id: number, updates: Partial<InsertSmsMessage>): Promise<SmsMessage | undefined> {
+    const [result] = await db
+      .update(smsMessages)
+      .set(updates)
+      .where(eq(smsMessages.id, id))
+      .returning();
     return result || undefined;
   }
 

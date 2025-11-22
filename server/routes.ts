@@ -3006,6 +3006,56 @@ export async function registerRoutes(app: Express): Promise<Server> {
     await handleSmsWebhook(req, res);
   });
 
+  // SMS Status Callback endpoint - handles message status updates from Twilio
+  app.post("/api/sms/status", async (req, res) => {
+    try {
+      // Validate Twilio webhook signature (skip in development)
+      if (process.env.NODE_ENV === 'production' && process.env.TWILIO_AUTH_TOKEN) {
+        const { validateRequest } = await import('twilio');
+        const twilioSignature = req.headers['x-twilio-signature'] as string;
+        const webhookUrl = getWebhookUrl('/api/sms/status');
+
+        const isValid = validateRequest(
+          process.env.TWILIO_AUTH_TOKEN,
+          twilioSignature,
+          webhookUrl,
+          req.body
+        );
+
+        if (!isValid) {
+          console.error('Invalid Twilio status callback signature');
+          res.status(403).send('Forbidden');
+          return;
+        }
+      }
+
+      const { MessageSid, MessageStatus, ErrorCode } = req.body;
+
+      console.log('SMS status update received:', {
+        messageSid: MessageSid,
+        status: MessageStatus,
+        errorCode: ErrorCode
+      });
+
+      // Update message status in database
+      const message = await storage.getSmsMessageByTwilioSid(MessageSid);
+      if (message) {
+        await storage.updateSmsMessage(message.id, {
+          status: MessageStatus,
+          errorCode: ErrorCode || null
+        });
+        console.log(`Updated message ${MessageSid} status to: ${MessageStatus}`);
+      } else {
+        console.warn(`Message not found for status update: ${MessageSid}`);
+      }
+
+      res.status(200).send('OK');
+    } catch (error) {
+      console.error('Error handling SMS status callback:', error);
+      res.status(500).send('Internal Server Error');
+    }
+  });
+
   // Auto-assign local Twilio number during onboarding
   app.post(
     "/api/sms/assign-local-number",
@@ -3422,12 +3472,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
       console.error("SMS dashboard error:", error);
       res.status(500).json({ message: "Failed to get SMS dashboard data" });
     }
-  });
-
-  // Inbound SMS webhook from Twilio
-  app.post("/api/sms/inbound", async (req, res) => {
-    const { handleSmsWebhook } = await import("./sms-webhook-handler");
-    await handleSmsWebhook(req, res);
   });
 
   // SMS forwarding settings endpoints
