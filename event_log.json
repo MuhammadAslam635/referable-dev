@@ -1,0 +1,391 @@
+[
+  {
+    "id": "09cc0e9d-5a5c-46f1-9d28-753d0ae39783",
+    "timestamp": "2025-09-10T18:48:54.414Z",
+    "user_id": "1",
+    "event_type": "business_signup",
+    "details": {
+      "business_name": "Test Business",
+      "business_email": "islamtalha01@gmail.com",
+      "signup_method": "direct"
+    }
+  },
+  {
+    "id": "cec0542e-363b-4645-ac7c-0ddb6c9e0755",
+    "timestamp": "2025-09-10T18:50:24.970Z",
+    "user_id": "1",
+    "event_type": "lead_created",
+    "details": {
+      "lead_id": 1,
+      "lead_name": "Muhammad Talha",
+      "lead_email": "islamtalha01@gmail.com",
+      "source": "manual",
+      "has_phone": true
+    }
+  },
+  {
+    "id": "dacc11ca-edef-4ffd-92b3-3a74f02e3eca",
+    "timestamp": "2025-09-10T19:03:45.587Z",
+    "user_id": "1",
+    "event_type": "lead_created",
+    "details": {
+      "lead_id": 2,
+      "lead_name": "sddvsdv",
+      "lead_email": null,
+      "source": "manual",
+      "has_phone": false
+    }
+  },
+  {
+    "id": "ff1bd3ac-6f0a-46f9-beb7-6f51a481ff36",
+    "timestamp": "2025-09-10T19:04:16.212Z",
+    "user_id": "1",
+    "event_type": "lead_status_changed",
+    "details": {
+      "lead_id": 2,
+      "lead_name": "sddvsdv",
+      "old_status": "unknown",
+      "new_status": "contacted"
+    }
+  },
+  {
+    "id": "47d57088-e7db-4440-8d5d-ac4a453d7652",
+    "timestamp": "2025-09-10T19:04:30.106Z",
+    "user_id": "1",
+    "event_type": "lead_status_changed",
+    "details": {
+      "lead_id": 2,
+      "lead_name": "sddvsdv",
+      "old_status": "unknown",
+      "new_status": "converted"
+    }
+  },
+  {
+    "id": "30e84b9c-484a-4147-83fd-f5edf39d55fe",
+    "timestamp": "2025-09-10T19:24:24.047Z",
+    "user_id": "1",
+    "event_type": "lead_status_changed",
+    "details": {
+      "lead_id": 1,
+      "lead_name": "Muhammad Talha",
+      "old_status": "unknown",
+      "new_status": "contacted"
+    }
+  },
+  {
+    "id": "af4e5afd-1d42-40b6-b802-0c51cee37441",
+    "timestamp": "2025-09-10T19:24:25.075Z",
+    "user_id": "1",
+    "event_type": "lead_status_changed",
+    "details": {
+      "lead_id": 1,
+      "lead_name": "Muhammad Talha",
+      "old_status": "unknown",
+      "new_status": "converted"
+    }
+  },
+  {
+    "id": "f39bdef7-d4e0-4ed3-a100-72ae59ac940f",
+    "timestamp": "2025-09-10T19:24:30.907Z",
+    "user_id": "1",
+    "event_type": "lead_status_changed",
+    "details": {
+      "lead_id": 1,
+      "lead_name": "Muhammad Talha",
+      "old_status": "unknown",
+      "new_status": "contacted"
+    }
+  },
+  {
+    "id": "e03ae62b-5b5a-4f28-8596-6d032086369d",
+    "timestamp": "2025-09-10T19:34:53.620Z",
+    "user_id": "1",
+    "event_type": "client_created",
+    "details": {
+      "client_id": 1,
+      "client_name": "Gavin Fisher",
+      "client_email": "duvega@mailinator.com",
+      "source": "manual",
+      "has_phone": true
+    }
+  },
+  {
+    "id": "5ab4ff4f-0662-42cb-b411-c7da48cc2361",
+    "timestamp": "2025-09-10T19:35:59.592Z",
+    "user_id": "1",
+    "event_type": "client_created",
+    "details": {
+      "client_id": 2,
+      "client_name": "Dylan Wynn",
+      "client_email": "wopapanu@mailinator.com",
+      "source": "manual",
+      "has_phone": true
+    }
+  },
+  {
+    "id": "b64eaa90-9257-4f42-9d86-cea754804dd1",
+    "timestamp": "2025-09-10T19:41:55.893Z",
+    "user_id": "1",
+    "event_type": "form_created",
+    "details": {
+      "form_id": 1,
+      "form_name": "Test Form",
+      "field_count": 4
+    }
+  },
+  {
+    "id": "5b32a566-bed2-43d7-bb39-0276b90bf209",
+    "timestamp": "2025-09-12T22:02:04.436Z",
+    "user_id": "2",
+    "event_type": "lead_created",
+    "details": {
+      "lead_id": 3,
+      "lead_name": "Sample Lead",
+      "lead_email": "sample_lead@yopmail.com",
+      "source": "manual",
+      "has_phone": true
+    }
+  },
+  {
+    "id": "d5249cfd-18a3-4731-b5be-f264083b7a7a",
+    "timestamp": "2025-09-12T22:03:16.564Z",
+    "user_id": "2",
+    "event_type": "client_created",
+    "details": {
+      "client_id": 3,
+      "client_name": "Sample Client",
+      "client_email": "sample_client@yopmail.com",
+      "source": "manual",
+      "has_phone": true
+    }
+  },
+  {
+    "id": "19450cb0-b15c-4a60-9168-4538c02c30ba",
+    "timestamp": "2025-09-17T22:12:32.165Z",
+    "user_id": "2",
+    "event_type": "lead_created",
+    "details": {
+      "lead_id": 4,
+      "lead_name": "Sample Lead 2",
+      "lead_email": "test_user2@yopmail.com",
+      "source": "manual",
+      "has_phone": true
+    }
+  },
+  {
+    "id": "643eab94-255f-4745-b0eb-f6f4e1d0159c",
+    "timestamp": "2025-09-17T22:13:37.185Z",
+    "user_id": "2",
+    "event_type": "client_created",
+    "details": {
+      "client_id": 4,
+      "client_name": "Sample Client2",
+      "client_email": "sample_client2@yopmail.com",
+      "source": "manual",
+      "has_phone": true
+    }
+  },
+  {
+    "id": "ef1751bd-0511-4da4-abcb-d1415ff56aad",
+    "timestamp": "2025-09-18T23:25:57.163Z",
+    "user_id": "3",
+    "event_type": "form_submitted",
+    "details": {
+      "form_id": 2,
+      "form_name": "Testing",
+      "lead_id": 5,
+      "lead_name": "awgdjkaw",
+      "submission_source": "public_form",
+      "has_referral": false
+    }
+  },
+  {
+    "id": "c4a7b50c-d4c6-4c7b-b803-3868ac62d8c5",
+    "timestamp": "2025-09-18T23:31:29.639Z",
+    "user_id": "3",
+    "event_type": "form_submitted",
+    "details": {
+      "form_id": 2,
+      "form_name": "Testing",
+      "lead_id": 6,
+      "lead_name": "eqe wqe qwe ",
+      "submission_source": "public_form",
+      "has_referral": false
+    }
+  },
+  {
+    "id": "910180a7-9a92-4009-8411-24612ed25b8f",
+    "timestamp": "2025-09-18T23:33:28.575Z",
+    "user_id": "3",
+    "event_type": "form_submitted",
+    "details": {
+      "form_id": 2,
+      "form_name": "Testing",
+      "lead_id": 7,
+      "lead_name": "fsf sdf sdf sd ",
+      "submission_source": "public_form",
+      "has_referral": false
+    }
+  },
+  {
+    "id": "91460ad1-7111-4203-ad68-397df684682c",
+    "timestamp": "2025-09-18T23:44:12.338Z",
+    "user_id": "3",
+    "event_type": "form_submitted",
+    "details": {
+      "form_id": 2,
+      "form_name": "Testing",
+      "lead_id": 8,
+      "lead_name": "dawda daaw",
+      "submission_source": "public_form",
+      "has_referral": false
+    }
+  },
+  {
+    "id": "26b6b095-2654-44c8-9600-727295e10f0a",
+    "timestamp": "2025-09-20T22:49:10.089Z",
+    "user_id": "3",
+    "event_type": "client_created",
+    "details": {
+      "client_id": 9,
+      "client_name": "Americono",
+      "client_email": "sdf@fdg.com",
+      "source": "manual",
+      "has_phone": true
+    }
+  },
+  {
+    "id": "31f52e14-2b13-4fd4-9fd1-51b2f16fe36e",
+    "timestamp": "2025-09-21T16:36:19.889Z",
+    "user_id": "6",
+    "event_type": "business_signup",
+    "details": {
+      "business_name": "Test User3",
+      "business_email": "test_user3@yopmail.com",
+      "signup_method": "direct"
+    }
+  },
+  {
+    "id": "f3f7244e-35bf-479a-8dc3-b98768bc5a1f",
+    "timestamp": "2025-09-21T19:15:56.494Z",
+    "user_id": "6",
+    "event_type": "csv_uploaded",
+    "details": {
+      "filename": "test_conversion.csv",
+      "file_size": 164,
+      "rows_processed": 1,
+      "rows_skipped": 0,
+      "total_rows": 1,
+      "phone_coverage": 0,
+      "error_count": 0,
+      "upload_method": "web_interface"
+    }
+  },
+  {
+    "id": "359a4a48-ca0d-43d0-a60b-19118af810b3",
+    "timestamp": "2025-09-24T21:02:00.399Z",
+    "user_id": "8",
+    "event_type": "business_signup",
+    "details": {
+      "business_name": "2nd Buissness",
+      "business_email": "testing@gmail.com",
+      "signup_method": "direct"
+    }
+  },
+  {
+    "id": "ea474452-15c5-46f5-8988-50008575bcc9",
+    "timestamp": "2025-10-01T21:02:33.425Z",
+    "user_id": "3",
+    "event_type": "form_created",
+    "details": {
+      "form_id": 4,
+      "form_name": "Tester",
+      "field_count": 4
+    }
+  },
+  {
+    "id": "43244a7f-4748-4539-870f-57de6c489ab2",
+    "timestamp": "2025-10-01T21:07:29.370Z",
+    "user_id": "3",
+    "event_type": "form_deleted",
+    "details": {
+      "form_id": 4
+    }
+  },
+  {
+    "id": "c2780341-3d11-4653-ba77-2a2782b8e897",
+    "timestamp": "2025-10-02T15:22:10.694Z",
+    "user_id": "3",
+    "event_type": "client_created",
+    "details": {
+      "client_id": 22,
+      "client_name": "Twilio",
+      "client_email": "test@gmail.com",
+      "source": "manual",
+      "has_phone": true
+    }
+  },
+  {
+    "id": "9347d4ae-7e77-4616-b2ae-ca3b9dc2b439",
+    "timestamp": "2025-10-12T18:29:42.561Z",
+    "user_id": "16",
+    "event_type": "business_signup",
+    "details": {
+      "business_name": "A New Buisness",
+      "business_email": "testingaccount@gmail.com",
+      "signup_method": "direct"
+    }
+  },
+  {
+    "id": "25b25f11-fec1-4d8f-9885-e8299daba877",
+    "timestamp": "2025-10-12T21:31:30.793Z",
+    "user_id": "16",
+    "event_type": "form_created",
+    "details": {
+      "form_id": 6,
+      "form_name": "NewForm",
+      "field_count": 4
+    }
+  },
+  {
+    "id": "12deb3fb-4fc9-4b4a-8f3d-374e68197574",
+    "timestamp": "2025-10-12T21:37:43.409Z",
+    "user_id": "16",
+    "event_type": "form_deleted",
+    "details": {
+      "form_id": 6
+    }
+  },
+  {
+    "id": "78990aa5-c37a-43f3-b7f7-e2827c12e2f2",
+    "timestamp": "2025-10-12T21:38:07.904Z",
+    "user_id": "16",
+    "event_type": "csv_uploaded",
+    "details": {
+      "filename": "test_conversion.csv",
+      "file_size": 164,
+      "rows_processed": 1,
+      "rows_skipped": 0,
+      "total_rows": 1,
+      "phone_coverage": 0,
+      "error_count": 0,
+      "upload_method": "web_interface"
+    }
+  },
+  {
+    "id": "dfc91b0d-d990-4752-a15f-4dab51da8e43",
+    "timestamp": "2025-10-12T22:21:18.996Z",
+    "user_id": "16",
+    "event_type": "csv_uploaded",
+    "details": {
+      "filename": "test_conversion.csv",
+      "file_size": 164,
+      "rows_processed": 1,
+      "rows_skipped": 0,
+      "total_rows": 1,
+      "phone_coverage": 0,
+      "error_count": 0,
+      "upload_method": "web_interface"
+    }
+  }
+]
