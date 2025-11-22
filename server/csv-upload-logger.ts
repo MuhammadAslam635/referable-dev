@@ -1,4 +1,4 @@
-import { storage } from "./storage";
+import { storage } from "./storage.js";
 import { type CsvUploadLog } from "@shared/schema";
 
 export interface LogCsvUploadParams {

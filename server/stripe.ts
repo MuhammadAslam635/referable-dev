@@ -1,5 +1,5 @@
 import Stripe from 'stripe';
-import { db } from './db';
+import { db } from './db.js';
 import { businesses } from '@shared/schema';
 import { eq } from 'drizzle-orm';
 import dotenv from 'dotenv';

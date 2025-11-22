@@ -2,16 +2,23 @@ import { defineConfig } from "vite";
 // @ts-ignore - TypeScript sometimes has issues resolving this package, but it works at runtime
 import react from "@vitejs/plugin-react";
 import path from "path";
-import runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal";
 
 export default defineConfig(async () => {
-  // Conditionally load Replit plugin only in development/Replit environment
+  // Conditionally load Replit plugins only in development/Replit environment
+  // These are ESM-only packages, so we must use dynamic imports
   const plugins: any[] = [
     react(),
-    runtimeErrorOverlay(),
   ];
 
-  if (process.env.NODE_ENV !== "production" && process.env.REPL_ID !== undefined) {
+  // Only load Replit plugins if in Replit environment
+  if (process.env.REPL_ID !== undefined) {
+    try {
+      const runtimeErrorOverlay = await import("@replit/vite-plugin-runtime-error-modal");
+      plugins.push(runtimeErrorOverlay.default());
+    } catch (e) {
+      // Plugin not available, skip it
+    }
+
     try {
       const cartographer = await import("@replit/vite-plugin-cartographer");
       plugins.push(cartographer.cartographer());

@@ -1,7 +1,7 @@
-import { db } from "./db";
+import { db } from "./db.js";
 import { businesses, clients, smsMessages, smsReplies, smsReplyContext } from "../shared/schema";
 import { eq, and, gt, lt } from "drizzle-orm";
-import { sendSms } from "./twilio-service";
+import { sendSms } from "./twilio-service.js";
 
 /**
  * SMS Relay Service

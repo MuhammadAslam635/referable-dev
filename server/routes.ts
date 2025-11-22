@@ -1,10 +1,10 @@
 import { response, type Express } from "express";
 import { createServer, type Server } from "http";
-import { storage } from "./storage";
+import { storage } from "./storage.js";
 import bcrypt from "bcrypt";
 import session from "express-session";
 import connectPgSimple from "connect-pg-simple";
-import { pool } from "./db";
+import { pool } from "./db.js";
 import { z } from "zod";
 import {
   loginSchema,
@@ -22,7 +22,7 @@ import {
   insertSmsTemplateSchema,
 } from "@shared/schema";
 import { and, asc, count, desc, eq, gte, lte, or, sql } from "drizzle-orm";
-import { db } from "./db";
+import { db } from "./db.js";
 import { smsMessages } from "@shared/schema";
 
 type Business = typeof businesses.$inferSelect;
@@ -37,16 +37,16 @@ import {
   autoAssignLocalNumber,
   getOwnedNumbers,
   renderMessageTemplate,
-} from "./twilio-service";
-import { logCsvUpload } from "./csv-upload-logger";
-import { processBulkCompletedBookings } from "./auto-sms-service";
-import { logEvent, getEvents } from "./event-logger";
-import { handleSmsWebhook } from "./sms-webhook-handler";
-import { sendPasswordResetEmail, sendWelcomeEmail } from "./email-service";
-import { getTwilioWebhookConfig, logWebhookConfig } from "./webhook-config";
+} from "./twilio-service.js";
+import { logCsvUpload } from "./csv-upload-logger.js";
+import { processBulkCompletedBookings } from "./auto-sms-service.js";
+import { logEvent, getEvents } from "./event-logger.js";
+import { handleSmsWebhook } from "./sms-webhook-handler.js";
+import { sendPasswordResetEmail, sendWelcomeEmail } from "./email-service.js";
+import { getTwilioWebhookConfig, logWebhookConfig, getWebhookUrl } from "./webhook-config.js";
 import * as XLSX from "xlsx";
 import { nanoid } from "nanoid";
-import { createCheckoutSession, createPortalSession } from "./stripe";
+import { createCheckoutSession, createPortalSession } from "./stripe.js";
 
 // Phone number utility functions for CSV processing
 function normalizePhoneNumber(phone: string): string | null {
@@ -3011,11 +3011,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       // Validate Twilio webhook signature (skip in development)
       if (process.env.NODE_ENV === 'production' && process.env.TWILIO_AUTH_TOKEN) {
-        const { validateRequest } = await import('twilio');
+        const twilioModule = await import('twilio');
+        const twilio = twilioModule.default || twilioModule;
         const twilioSignature = req.headers['x-twilio-signature'] as string;
         const webhookUrl = getWebhookUrl('/api/sms/status');
 
-        const isValid = validateRequest(
+        const isValid = twilio.validateRequest(
           process.env.TWILIO_AUTH_TOKEN,
           twilioSignature,
           webhookUrl,

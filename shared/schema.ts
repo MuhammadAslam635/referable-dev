@@ -149,6 +149,7 @@ export const smsMessages = pgTable("sms_messages", {
   messageType: text("message_type"), // "referral", "thank_you", "review_request", "reply", etc.
   twilioSid: text("twilio_sid").notNull().unique(),
   status: text("status").default("sent").notNull(), // "sent", "delivered", "failed", "unread", "read"
+  errorCode: text("error_code"), // Twilio error code when message fails
   timestamp: timestamp("timestamp").defaultNow().notNull(),
 });
 

@@ -7,7 +7,7 @@ import { Request, Response } from 'express';
 import { DatabaseStorage } from './storage.js';
 import { formatPhoneNumber } from './twilio-service.js';
 import { processSmsWebhook, cleanupExpiredContexts } from './sms-relay-service.js';
-import { validateRequest } from 'twilio';
+import twilio from 'twilio';
 import { getWebhookUrl } from './webhook-config.js';
 
 const storage = new DatabaseStorage();
@@ -87,7 +87,7 @@ export async function handleSmsWebhook(req: Request, res: Response): Promise<voi
       const twilioSignature = req.headers['x-twilio-signature'] as string;
       const webhookUrl = getWebhookUrl('/api/sms/inbound');
 
-      const isValid = validateRequest(
+      const isValid = twilio.validateRequest(
         process.env.TWILIO_AUTH_TOKEN,
         twilioSignature,
         webhookUrl,

@@ -1,5 +1,5 @@
-import { storage } from "./storage";
-import { sendSms } from "./twilio-service";
+import { storage } from "./storage.js";
+import { sendSms } from "./twilio-service.js";
 
 /**
  * Sends automated thank-you SMS when an appointment is completed

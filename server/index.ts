@@ -116,18 +116,27 @@ app.use((req, res, next) => {
   // importantly only setup vite in development and after
   // setting up all the other routes so the catch-all route
   // doesn't interfere with the other routes
-  if (app.get("env") === "development") {
+  // Only use Vite in development mode - default to static files in production
+  const isDevelopment = process.env.NODE_ENV === "development";
+  
+  if (isDevelopment) {
+    // Only import vite in development - this import is tree-shaken in production builds
     try {
-      const { setupVite } = await import("./vite.js");
-      await setupVite(app, server);
+      // Use a string literal to help bundlers tree-shake this in production
+      const viteModule = await import(/* @vite-ignore */ "./vite.js");
+      await viteModule.setupVite(app, server);
+      console.log("✅ Vite dev server enabled");
     } catch (error) {
-      console.warn("Vite not available, falling back to static serving:", error);
+      console.warn("⚠️ Vite not available, falling back to static serving:", error);
       const { serveStatic } = await import("./static.js");
       serveStatic(app);
     }
   } else {
+    // Production mode - always serve static files
+    // This path is taken in production, so vite import above is never executed
     const { serveStatic } = await import("./static.js");
     serveStatic(app);
+    console.log("✅ Static file serving enabled (production mode)");
   }
 
   // ALWAYS serve the app on port 5000

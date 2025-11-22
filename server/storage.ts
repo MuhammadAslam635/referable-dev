@@ -51,7 +51,7 @@ import {
   type SmsTemplate,
   type InsertSmsTemplate
 } from "@shared/schema";
-import { db } from "./db";
+import { db } from "./db.js";
 import { and, eq, desc, sql, or, isNull, ilike, SQL, count, avg, isNotNull } from "drizzle-orm";
 import { nanoid } from "nanoid";
 
